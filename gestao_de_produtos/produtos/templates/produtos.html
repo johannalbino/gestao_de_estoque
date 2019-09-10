@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% load static %}
+
+{% block title %} Gerando Padrão {% endblock title %}
+
+{% block content %}
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-5">
+
+        </div>
+        <div class="col-md-3">
+            <h1>Meus produtos</h1>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="col-md-12">
+            {% include "_tabelaProdutos.html" %}
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block javascript%}
+
+{% endblock %}

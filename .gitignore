@@ -1,0 +1,5 @@
+.idea
+gestao_de_produtos/db.sqlite3
+gestao_de_produtos/gestao_de_produtos/__pycache__/
+gestao_de_produtos/produtos/__pycache__/
+gestao_de_produtos/produtos/migrations/

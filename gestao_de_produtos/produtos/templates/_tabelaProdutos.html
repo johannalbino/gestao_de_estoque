@@ -1,0 +1,107 @@
+<div>
+    <table id="tableProdutos" class="table table-hover table-bordered table-striped">
+      <thead>
+        <tr>
+          <td>Gerir</td>
+          <td>Código do Produto</td>
+          <td>Produto</td>
+          <td>Quantidade</td>
+          <td>Validade</td>
+        </tr>
+        <tr>
+          <th id="gerir">Gerir</th>
+          <th id="codigo_produto">Código do Produto</th>
+          <th id="produto">Produto</th>
+          <th id="quantidade">Quantidade</th>
+          <th id="validade">Validade</th>
+        </tr>
+      <thead>
+      <tbody id="corpo">
+      {% if produtos %}
+        {% for item in produtos %}
+        <tr data-contratos="{{item.id}}">
+          <td class="tools">
+            <a class="btn btn-link btn-xs" href="{% url 'editar' item.id %}">Editar<i class="fa fa-edit"></i></a>
+            <a class="btn btn-link btn-xs" href="{% url 'excluir' item.id %}">Excluir<i class="fa fa-edit"></i></a>
+          </td>
+          <td> {{ item.codigo_produto }} </td>
+          <td> {{ item.nome_produto }} </td>
+          <td> {{ item.quantidade }} </td>
+          <td> {{ item.validade }} </td>
+        </tr>
+        {% endfor %}
+      {% else %}
+        <tr>
+          <td colspan="7"><spam class="label label-warning">Nenhum produto cadastrado.</spam></td>
+        </tr>
+      {% endif %}
+      </tbody>
+    </table>
+</div><!-- /.table-responsive -->
+
+
+{% block javascript %}
+<script>
+    function filterColumn(i) {
+            $('#tableProdutos').DataTable().column(i).search(
+                $('#col' + i + '_filter').val(),
+                false,
+                true
+            ).draw();
+        }
+
+
+        $(document).ready(function () {
+            $('#tableProdutos thead th').each(function () {
+                var title = $(this).text().trim();
+                var titleId = $(this).attr('data');
+                $(this).html('<input type="text" class="form-control" id="id_' + titleId + '" placeholder="Pesquisar ' + title + '" />');
+            });
+            var table = $('#tableProdutos').DataTable({
+                "ordering": true,
+                "columnDefs": [
+                    {"ordertable": true, "targets": 1}
+                ],
+                "order": [[1, "asc"]],
+                "scrollX": false,
+                "language": {
+                    "sEmptyTable": "Nenhum registro encontrado",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "_MENU_ resultados por página",
+                    "sLoadingRecords": "Carregando...",
+                    "sProcessing": "Processando...",
+                    "sZeroRecords": "Nenhum registro encontrado",
+                    "sSearch": "Pesquisar",
+                    "oPaginate": {
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior",
+                        "sFirst": "Primeiro",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    }
+                }
+            });
+            $('input.column_filter').on('keyup click', function () {
+                filterColumn($(this).parents('tr').attr('data-column'));
+            });
+
+            table.columns().every(function () {
+                var that = this;
+                $('input', this.header()).on('keyup change', function () {
+                    if (that.search() !== this.value) {
+                        that
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
+        });
+</script>
+{% endblock %}
