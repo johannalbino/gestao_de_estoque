@@ -1,3 +1,4 @@
+venv/
 .idea
 gestao_de_produtos/db.sqlite3
 gestao_de_produtos/gestao_de_produtos/__pycache__/
