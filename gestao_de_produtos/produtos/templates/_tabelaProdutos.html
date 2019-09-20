@@ -1,4 +1,16 @@
+{% load staticfiles %}
+
 <div>
+  <div class="row">
+    <div class="col-md-4">
+      <button class="btn"><a href="{% url 'novo' %}">Novo</a></button>
+    </div>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+      asdas
+    </div>
+  </div>
     <table id="tableProdutos" class="table table-hover table-bordered table-striped">
       <thead>
         <tr>
@@ -21,8 +33,8 @@
         {% for item in produtos %}
         <tr data-contratos="{{item.id}}">
           <td class="tools">
-            <a class="btn btn-link btn-xs" href="{% url 'editar' item.id %}">Editar<i class="fa fa-edit"></i></a>
-            <a class="btn btn-link btn-xs" href="{% url 'excluir' item.id %}">Excluir<i class="fa fa-edit"></i></a>
+            <a href="{% url 'editar' item.id %}"><img src="{% static 'imagens/edit.svg' %}"  /></a>
+            <a href="{% url 'excluir' item.id %}"><img src="{% static 'imagens/rubbish-bin.svg' %}" /></button></a>
           </td>
           <td> {{ item.codigo_produto }} </td>
           <td> {{ item.nome_produto }} </td>
@@ -55,7 +67,7 @@
             $('#tableProdutos thead th').each(function () {
                 var title = $(this).text().trim();
                 var titleId = $(this).attr('data');
-                $(this).html('<input type="text" class="form-control" id="id_' + titleId + '" placeholder="Pesquisar ' + title + '" />');
+                $(this).html('<input type="text" class="form-control search" id="id_' + titleId + '" placeholder="Pesquisar ' + title + '" />');
             });
             var table = $('#tableProdutos').DataTable({
                 "ordering": true,

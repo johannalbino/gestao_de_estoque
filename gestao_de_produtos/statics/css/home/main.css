@@ -1,0 +1,90 @@
+﻿.p-10 {
+    padding: 10px;
+}
+
+.m-10 {
+    margin: 10px;
+}
+
+img{
+    width: 20px;
+    margin-left: 35px;
+}
+
+button a {
+    color: white;
+}
+
+.edit-product-btn a {
+    color: #28a745;
+}
+
+.edit-product-btn a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+ .table > tbody > tr > td {
+    font-size: .8rem;
+}
+ 
+.paginate_button {
+    font-size: 1rem;
+    color: gray;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 5px;
+    padding: 5px;
+}
+
+.paginate_button:hover {
+    color: #28a745; 
+}
+
+.dataTables_length select { 
+    height: calc(2.1rem + 2px);
+    padding: .10rem .75rem;
+    font-size: .9rem;  
+    background-color: #fff; 
+    border: 1px solid #ced4da;
+    border-radius: .25rem; 
+
+}
+
+.dataTables_length {
+    padding: 5px;
+    margin: 5px;
+}
+.dataTables_info {
+    border-bottom: 1px solid gray;
+}
+
+.dataTables_paginate {
+    padding-top: 5px;
+
+    display: block;
+}
+
+#tableMeter_filter, #tabelaLogs_filter {
+    padding: 10px 5px;
+}
+
+
+#tableMeter_filter input, #tabelaLogs_filter input {
+    margin-left: 15px;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow
+}
+
+#newSourceBtn a:hover {
+    color:white;
+    text-decoration: none;
+}

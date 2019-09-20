@@ -21,6 +21,7 @@ def novo(request):
         return redirect('index')
     return render(request, template_name, {"formProduto": form})
 
+
 def editar(request, id):
     template_name = 'novo.html'
     produto = get_object_or_404(Produtos, pk=id)
